@@ -11,6 +11,9 @@ const {
   concluirTarefa
 } = require("./controllers/gerenciador-tarefas.js");
 
+const {finalizarCompra} = require("./controllers/mini-ecommerce.js");
+const { application } = require("express");
+
 const app = express();
 const port = 3001;
 
@@ -28,5 +31,8 @@ app.put("/gerenciador-tarefas/:id", atualizarTarefa);
 app.delete("/gerenciador-tarefas/:id", removerTarefa);
 
 app.put("/gerenciador-tarefas/:id/concluir", concluirTarefa);
+
+//mini-ecommerce
+app.post('/mini-ecommerce/checkout/finalizar-compra', finalizarCompra);
 
 app.listen(port, () => console.log(`Servidor inicializado na porta ${port}`));
